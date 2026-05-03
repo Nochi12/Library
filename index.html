@@ -9,9 +9,47 @@
 </head>
 <body>
     <div class="header">
-        <p class="test">test</p>
+        <h1>Welcome to Library</h1>
+        <br>
+        <button id="addBookForm"  command="show-modal"  commandfor="book_form">Add Book</button>
+        <dialog id="book_form" >
+               <button id="cancelBtn" commandfor="book_form" command="close">X</button>
+               <br>
+               <br>
+          <form>
+         <div>
+        <label for="title">Title: </label>
+        <input type="text" name="title" id="title">
     </div>
+      <br>
+      <div>
+        <label for="author">Author :</label>
+        <input type="text" name="author" id="author">
+    </div>
+       <br>
+       <div>
+        <label for="pages">Pages :</label>
+        <input type="number" name="pages" id="pages">
+    </div>
+       <br>
+    <div>
+        <fieldset>
+            <legend>read</legend>
+            <input type="radio" name="readStatus" id="read" value="Read">
+            <label for="read">Read</label>
+             <input type="radio" name="readStatus" id="not_read" value="Not Read">
+            <label for="not_read">Not Read</label>
+        </fieldset>
+    </div>
+       <br>
     
+      <button  id="confirmBtn"  >submit</button>
+    </form>
+    
+        </dialog>
+        
+    </div>
+    <p id="demo"></p>
     <div id="container">
         
     </div>

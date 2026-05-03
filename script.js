@@ -18,16 +18,16 @@ function addBookToLibrary( title, author, pages , read ) {
     return push_Book
 }
 
-addBookToLibrary("Atomic Habits","James Clear", 200, "not read")
-addBookToLibrary("The Fellowship of the Ring","tolkien", 423, " read" )
-addBookToLibrary("count of monte cristo","Alexandre Dumas", 1500 , "read" )
+addBookToLibrary("Atomic Habits","James Clear", 200, "Not Read")
+addBookToLibrary("The Fellowship of the Ring","tolkien", 423, " Read" )
+addBookToLibrary("count of monte cristo","Alexandre Dumas", 1500 , "Read" )
 //console.log(myLibrary)
 
 //for(let Book of myLibrary){
   // console.log(Book);
 //}
-function showBookToPage(){
-    myLibrary.forEach((function(Book){
+function showBookToPage(array){
+    array.forEach((function(Book){
       const bookContainer = document.createElement("div");
       bookContainer.classList.add("bookContainer");
       bookContainer.style.height= "300px"
@@ -56,4 +56,21 @@ function showBookToPage(){
     }));
 };
 
-showBookToPage()
+confirmBtn.addEventListener("click", (event) => {
+ 
+  event.preventDefault();
+
+  const book_title = document.getElementById("title");
+  const book_author = document.getElementById("author");
+  const book_pages = document.getElementById("pages");
+  const book_read = document.querySelector('input[name=readStatus]:checked');
+
+  
+ book_form.close(addBookToLibrary( book_title.value, book_author.value, book_pages.value ,  book_read.value ))
+
+    const slice = myLibrary.slice(-1);
+  console.log(slice)
+  showBookToPage(slice)
+});
+
+showBookToPage(myLibrary)

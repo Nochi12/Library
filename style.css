@@ -34,13 +34,12 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 .header{
-    height: 200px;
+    height: 150px;
     width: 100%;
     text-align: center;
+    margin-top: 25px;
 }
-.test{
-    color:blue;
-}
+
 
 
 #container{
@@ -53,4 +52,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 p{
   font-size: 25px;
+}
+#addBookForm{
+  width: 150px;
+  border-radius: 10px;
+  height: 35px;
+}
+#cancelBtn{
+  border-radius: 50%;
 }
