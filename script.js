@@ -29,32 +29,48 @@ addBookToLibrary("count of monte cristo","Alexandre Dumas", 1500 , "Read" )
 function showBookToPage(array){
     array.forEach((function(Book){
       const bookContainer = document.createElement("div");
+      const h1 = document.createElement("h1");
+      const p1 = document.createElement("p");
+      const p2 = document.createElement("p");
+      const p3 = document.createElement("p");
+      const reset = document.createElement("button");
+
+      h1.textContent = Book.title;
+      p1.textContent = `Author: ${Book.author}`;
+      p2.textContent = `Pages: ${Book.pages}`;
+      p3.textContent = `Status: ${Book.read}`;  
+      reset.innerHTML  = '🗑️';
+      bookContainer.dataset.bookID = Book.id;
+
+      bookContainer.appendChild(h1);
+      bookContainer.appendChild(p1);
+      bookContainer.appendChild(p2);
+      bookContainer.appendChild(p3);
+      bookContainer.appendChild(reset);
+      container.appendChild(bookContainer)
+         
       bookContainer.classList.add("bookContainer");
       bookContainer.style.height= "300px"
       bookContainer.style.border = "solid 1px  black";
       bookContainer.style.textAlign= "center"
+      reset.style.width="80%";
+      reset.style.borderRadius = "15px";
+      reset.style.marginTop= "40px";
       //Object.entries(Book).forEach(function(value){
     //  const p = document.createElement("p");
     //  p.innerHTML= value;
     //  bookContainer.appendChild(p);
     // });
-      const h1 = document.createElement("h1");
-      const p1 = document.createElement("p");
-      const p2 = document.createElement("p");
-      const p3 = document.createElement("p");
-      h1.textContent = Book.title;
-      p1.textContent = `Author: ${Book.author}`;
-      p2.textContent = `Pages: ${Book.pages}`;
-      p3.textContent = `Status: ${Book.read}`;  
-      
-      bookContainer.appendChild(h1);
-      bookContainer.appendChild(p1);
-      bookContainer.appendChild(p2);
-      bookContainer.appendChild(p3);
-      container.appendChild(bookContainer)
-      console.log(Book);
+    reset.addEventListener("click", () =>{
+      bookContainer.dataset.bookID
+     container.removeChild(bookContainer)
+    });
+    
+    
+     // console.log(Book);   
     }));
 };
+
 
 confirmBtn.addEventListener("click", (event) => {
  
