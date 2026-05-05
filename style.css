@@ -67,8 +67,46 @@ p{
 }
 #cancelBtn{
   border-radius: 50%;
+  margin-top: -10px;
+  float: right;
+  background-color: #7F8086;
 }
 
-div.bookContainer button:hover{
+button:hover{
   Transform: scale(1.05);
+}
+#book_form{
+  padding: 30px;
+  background-color: #F6F7F8;
+}
+.bookFormInput{
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.bookFormInput legend{
+  text-align: center;
+}
+.bookFormInput #read
+{
+ margin-left: 20px;
+}
+
+.bookFormInput #not_read
+{
+ margin-left: 10px;
+}
+
+#confirmBtn{
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #b4b5be;
+}
+#book_form div:first-child{
+  margin-top: -20px;
 }

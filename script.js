@@ -77,10 +77,12 @@ function showBookToPage(array){
       reset.style.marginTop= "40px";
       reset.style.marginLeft= "10px";
       reset.style.padding= "5px";
+      reset.style.backgroundColor =" #7F8086";
       changeRead.style.width="40%";
       changeRead.style.borderRadius = "15px";
       changeRead.style.marginTop= "40px"
       changeRead.style.padding= "5px";
+      changeRead.style.backgroundColor = "#b4b5be";
       h1.style.marginBottom="20px"
       p3.style.marginBottom="20px"
       changeRead.addEventListener("click",()=>
