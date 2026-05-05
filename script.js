@@ -1,4 +1,6 @@
-const container = document.querySelector("#container")
+const container = document.querySelector("#container");
+const confirmBtn = document.querySelector("#confirmBtn") ;
+const book_form = document.getElementById("book_form");
 const myLibrary = [];
 
 function Book( title, author, pages,read ,id, ) {
@@ -12,14 +14,23 @@ function Book( title, author, pages,read ,id, ) {
 }
 
 function addBookToLibrary( title, author, pages , read ) {
-
     const create_Book = new Book( title, author, pages, read );
-    const push_Book = myLibrary.push(create_Book);
-    return push_Book
+   return myLibrary.push(create_Book);
 }
 
+Book.prototype.changeReadStatus = function(){
+ if(this.read === "Read"){
+     this.read = "Not Read";
+  }
+  else if (this.read === "Not Read"){
+       this.read = "Read";
+ }
+}
+
+
+console.log(myLibrary)
 addBookToLibrary("Atomic Habits","James Clear", 200, "Not Read")
-addBookToLibrary("The Fellowship of the Ring","tolkien", 423, " Read" )
+addBookToLibrary("The Fellowship of the Ring","tolkien", 423, "Read" )
 addBookToLibrary("count of monte cristo","Alexandre Dumas", 1500 , "Read" )
 //console.log(myLibrary)
 
@@ -27,25 +38,28 @@ addBookToLibrary("count of monte cristo","Alexandre Dumas", 1500 , "Read" )
   // console.log(Book);
 //}
 function showBookToPage(array){
-    array.forEach((function(Book){
+    array.forEach((function(book){
       const bookContainer = document.createElement("div");
       const h1 = document.createElement("h1");
       const p1 = document.createElement("p");
       const p2 = document.createElement("p");
       const p3 = document.createElement("p");
       const reset = document.createElement("button");
+      const changeRead = document.createElement("button")
 
-      h1.textContent = Book.title;
-      p1.textContent = `Author: ${Book.author}`;
-      p2.textContent = `Pages: ${Book.pages}`;
-      p3.textContent = `Status: ${Book.read}`;  
-      reset.innerHTML  = '🗑️';
-      bookContainer.dataset.bookID = Book.id;
+      h1.textContent = book.title;
+      p1.textContent = `Author: ${book.author}`;
+      p2.textContent = `Pages: ${book.pages}`;
+      p3.textContent = book.read;  
+      reset.innerHTML  = '🗑️';  
+      changeRead.innerHTML  = 'Reset Book Status';
+      bookContainer.dataset.bookID = book.id;
 
       bookContainer.appendChild(h1);
       bookContainer.appendChild(p1);
       bookContainer.appendChild(p2);
       bookContainer.appendChild(p3);
+      bookContainer.appendChild(changeRead);
       bookContainer.appendChild(reset);
       container.appendChild(bookContainer)
          
@@ -56,6 +70,15 @@ function showBookToPage(array){
       reset.style.width="80%";
       reset.style.borderRadius = "15px";
       reset.style.marginTop= "40px";
+
+      
+      changeRead.addEventListener("click",()=>
+        {
+          book.changeReadStatus();
+          //console.log(book.read)
+          bookContainer.dataset.bookID
+         p3.textContent = book.read;
+       });  
       //Object.entries(Book).forEach(function(value){
     //  const p = document.createElement("p");
     //  p.innerHTML= value;
