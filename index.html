@@ -9,14 +9,17 @@
 </head>
 <body>
     <div class="header">
+        <div>
         <h1>Welcome to Library</h1>
-        <br>
+        </div>
+      <div>
         <button id="addBookForm"  command="show-modal"  commandfor="book_form">Add Book</button>
+       </div>
         <dialog id="book_form" >
                <button id="cancelBtn" commandfor="book_form" command="close">X</button>
                <br>
                <br>
-          <form>
+          <form id="bookForm">
          <div>
         <label for="title">Title: </label>
         <input type="text" name="title" id="title">
@@ -49,7 +52,7 @@
         </dialog>
         
     </div>
-    <p id="demo"></p>
+
     <div id="container">
         
     </div>

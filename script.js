@@ -18,7 +18,7 @@ function addBookToLibrary( title, author, pages , read ) {
    return myLibrary.push(create_Book);
 }
 
-Book.prototype.changeReadStatus = function(){
+Book.prototype.toggleReadStatus = function(){
  if(this.read === "Read"){
      this.read = "Not Read";
   }
@@ -31,7 +31,7 @@ Book.prototype.changeReadStatus = function(){
 console.log(myLibrary)
 addBookToLibrary("Atomic Habits","James Clear", 200, "Not Read")
 addBookToLibrary("The Fellowship of the Ring","tolkien", 423, "Read" )
-addBookToLibrary("count of monte cristo","Alexandre Dumas", 1500 , "Read" )
+addBookToLibrary("The Count of Monte Cristo","Alexandre Dumas", 1500 , "Read" )
 //console.log(myLibrary)
 
 //for(let Book of myLibrary){
@@ -50,9 +50,9 @@ function showBookToPage(array){
       h1.textContent = book.title;
       p1.textContent = `Author: ${book.author}`;
       p2.textContent = `Pages: ${book.pages}`;
-      p3.textContent = book.read;  
+      p3.textContent = `Status: ${book.read}`;  
       reset.innerHTML  = '🗑️';  
-      changeRead.innerHTML  = 'Reset Book Status';
+      changeRead.innerHTML  = 'Toggle Book Status';
       bookContainer.dataset.bookID = book.id;
 
       bookContainer.appendChild(h1);
@@ -66,18 +66,29 @@ function showBookToPage(array){
       bookContainer.classList.add("bookContainer");
       bookContainer.style.height= "300px"
       bookContainer.style.border = "solid 1px  black";
-      bookContainer.style.textAlign= "center"
-      reset.style.width="80%";
+      bookContainer.style.textAlign= "center";
+      bookContainer.style.backgroundColor = "#EAEDF0";
+      bookContainer.style.padding= "25px";
+      bookContainer.style.borderRadius= "5px";
+      bookContainer.style.boxShadow = "5px 5px 12px 6px rgba(0,0,0,0.19)";
+      bookContainer.style.marginBottom ="10px"
+      reset.style.width="40%";
       reset.style.borderRadius = "15px";
       reset.style.marginTop= "40px";
-
-      
+      reset.style.marginLeft= "10px";
+      reset.style.padding= "5px";
+      changeRead.style.width="40%";
+      changeRead.style.borderRadius = "15px";
+      changeRead.style.marginTop= "40px"
+      changeRead.style.padding= "5px";
+      h1.style.marginBottom="20px"
+      p3.style.marginBottom="20px"
       changeRead.addEventListener("click",()=>
         {
-          book.changeReadStatus();
+          book.toggleReadStatus();
           //console.log(book.read)
           bookContainer.dataset.bookID
-         p3.textContent = book.read;
+         p3.textContent = `Status: ${book.read}`;
        });  
       //Object.entries(Book).forEach(function(value){
     //  const p = document.createElement("p");
@@ -104,9 +115,10 @@ confirmBtn.addEventListener("click", (event) => {
   const book_pages = document.getElementById("pages");
   const book_read = document.querySelector('input[name=readStatus]:checked');
 
-  
- book_form.close(addBookToLibrary( book_title.value, book_author.value, book_pages.value ,  book_read.value ))
+  addBookToLibrary( book_title.value, book_author.value, book_pages.value ,  book_read.value )
+ book_form.close()
 
+ document.getElementById("bookForm").reset();
     const slice = myLibrary.slice(-1);
   console.log(slice)
   showBookToPage(slice)
